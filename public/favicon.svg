@@ -1,0 +1,8 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="32" height="32" fill="#000000"/>
+<!-- Crown emoji as SVG path -->
+<path d="M6 20L8 12L12 16L16 8L20 16L24 12L26 20L28 20L28 22L4 22L4 20L6 20Z" fill="#FFD700"/>
+<circle cx="8" cy="12" r="1.5" fill="#FFD700"/>
+<circle cx="16" cy="8" r="1.5" fill="#FFD700"/>
+<circle cx="24" cy="12" r="1.5" fill="#FFD700"/>
+</svg>
