@@ -202,17 +202,17 @@ export default function Home() {
       </section>
 
       {/* Secondary Hero */}
-      <section className="max-w-[1512px] mx-auto px-6 py-20 text-center">
+      <section className="max-w-[1512px] mx-auto px-4 sm:px-6 py-12 sm:py-20 text-center">
         
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-block mb-8"
+          className="inline-block mb-6 sm:mb-8"
         >
-          <div className="bg-dark-border border border-[rgba(71,71,71,0.25)] rounded-full px-8 py-2.5">
-            <p className="text-xs text-white">
+          <div className="bg-dark-border border border-[rgba(71,71,71,0.25)] rounded-full px-4 sm:px-8 py-2 sm:py-2.5">
+            <p className="text-xs sm:text-sm text-white">
               Structură clară • Semnale zilnice • Risk management • Mindset & execuție • Tool-uri proprietare
             </p>
           </div>
@@ -223,7 +223,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[45px] leading-[1.21] font-normal mb-6 max-w-[1034px] mx-auto"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] leading-[1.21] font-normal mb-4 sm:mb-6 max-w-[1034px] mx-auto"
         >
           Mai mult decât o comunitate de trading,<br />un sistem care te ține în joc
         </motion.h2>
@@ -233,19 +233,19 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg opacity-50 max-w-[616px] mx-auto"
+          className="text-sm sm:text-base lg:text-lg opacity-50 max-w-[616px] mx-auto"
         >
           DYNASTY îmbină educație aplicată, semnale filtrate și suport zilnic. Tot ce-ți trebuie ca să evoluezi din haos în metodă.
         </motion.p>
       </section>
 
       {/* Three Pillars Section */}
-      <section className="max-w-[1512px] mx-auto px-6 py-16">
-        <h2 className="text-[45px] leading-[1.21] font-normal text-center mb-16">
+      <section className="max-w-[1512px] mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] leading-[1.21] font-normal text-center mb-8 sm:mb-16">
           Trei piloni. O singură direcție: PROFIT.
         </h2>
 
-        <div className="grid grid-cols-1 gap-12 max-w-[1320px] mx-auto">
+        <div className="grid grid-cols-1 gap-8 sm:gap-12 max-w-[1320px] mx-auto">
           {/* Memecoin Trading */}
           <motion.div
             id="memecoin"
@@ -253,13 +253,13 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-dark-secondary border border-dark-border rounded-sm p-12 grid md:grid-cols-2 gap-8 items-center hover:border-primary/30 transition-colors"
+            className="bg-dark-secondary border border-dark-border rounded-sm p-6 sm:p-8 lg:p-12 grid md:grid-cols-2 gap-6 sm:gap-8 items-center hover:border-primary/30 transition-colors"
           >
-            <div>
-              <h3 className="text-[65px] leading-[1.21] font-medium mb-6">
+            <div className="order-2 md:order-1">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6">
                 MEMECOIN TRADING
               </h3>
-              <p className="text-base leading-[1.21] mb-4">
+              <p className="text-sm sm:text-base leading-[1.21] mb-3 sm:mb-4">
                 Call-uri zilnice pe monede cu potențial exploziv.<br />
                 Boți și alerte pentru proiecte timpurii.<br />
                 CT Tracker – monitorizează trendurile virale.<br />
@@ -269,7 +269,7 @@ export default function Home() {
                 (Printre ultimele semnale a generat +163.000% – adică peste 1630X profit real)
               </p>
             </div>
-            <div className="relative aspect-[645/363] rounded-sm overflow-hidden">
+            <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
               <Image
                 src="/images/trading-result-3.png"
                 alt="Memecoin Trading Results"
@@ -286,13 +286,13 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-dark-secondary border border-dark-border rounded-sm p-12 grid md:grid-cols-2 gap-8 items-center hover:border-primary/30 transition-colors"
+            className="bg-dark-secondary border border-dark-border rounded-sm p-6 sm:p-8 lg:p-12 grid md:grid-cols-2 gap-6 sm:gap-8 items-center hover:border-primary/30 transition-colors"
           >
-            <div>
-              <h3 className="text-[65px] leading-[1.21] font-medium mb-6">
+            <div className="order-2 md:order-1">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6">
                 FUTURES TRADING
               </h3>
-              <p className="text-base leading-[1.21] mb-4">
+              <p className="text-sm sm:text-base leading-[1.21] mb-3 sm:mb-4">
                 Intrări și ieșiri precise, zilnic.<br />
                 Strategia profitului compus 2%/zi.<br />
                 Obiectiv: 1.000.000$ prin disciplină.<br />
@@ -302,7 +302,7 @@ export default function Home() {
                 (Winrate constant între 90% și 100% pe semnale validate)
               </p>
             </div>
-            <div className="relative aspect-[645/363] rounded-sm overflow-hidden">
+            <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
               <Image
                 src="/images/trading-result-2.png"
                 alt="Futures Trading Results"
@@ -319,13 +319,13 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-dark-secondary border border-dark-border rounded-sm p-12 grid md:grid-cols-2 gap-8 items-center hover:border-primary/30 transition-colors"
+            className="bg-dark-secondary border border-dark-border rounded-sm p-6 sm:p-8 lg:p-12 grid md:grid-cols-2 gap-6 sm:gap-8 items-center hover:border-primary/30 transition-colors"
           >
-            <div>
-              <h3 className="text-[65px] leading-[1.21] font-medium mb-6">
+            <div className="order-2 md:order-1">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6">
                 WEALTH PORTFOLIO
               </h3>
-              <p className="text-base leading-[1.21] mb-4">
+              <p className="text-sm sm:text-base leading-[1.21] mb-3 sm:mb-4">
                 Strategii pe termen scurt, mediu, lung.<br />
                 Spot trading organizat și planificat.<br />
                 Analize macro și trenduri fundamentale.<br />
@@ -335,7 +335,7 @@ export default function Home() {
                 (Construiește un portofoliu solid și diversificat pe termen lung)
               </p>
             </div>
-            <div className="relative aspect-[645/363] rounded-sm overflow-hidden">
+            <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
               <Image
                 src="/images/trading-result-1.png"
                 alt="Wealth Portfolio Results"
