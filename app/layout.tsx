@@ -12,12 +12,16 @@ export const metadata: Metadata = {
   authors: [{ name: 'DYNASTY' }],
   creator: 'DYNASTY',
   publisher: 'DYNASTY',
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
-      { url: '/favicon.svg', type: 'image/svg+xml' }
-    ],
-  },
+      icons: {
+        icon: [
+          { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+          { url: '/favicon.svg', type: 'image/svg+xml' },
+          { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
+        ],
+        apple: [
+          { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
+        ]
+      },
   formatDetection: {
     email: false,
     address: false,
@@ -54,10 +58,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ro" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <html lang="ro" suppressHydrationWarning>
+          <head>
+            <link rel="icon" href="/favicon.ico" sizes="32x32" />
+            <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+            <link rel="apple-touch-icon" href="/favicon-32x32.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
