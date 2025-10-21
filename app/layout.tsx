@@ -33,11 +33,20 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ro_RO',
     siteName: 'DYNASTY',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'DYNASTY - Cea mai puternică comunitate de Trading',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'DYNASTY - Cea mai puternică comunitate de Trading',
     description: 'Ecosistem complet de educație, informație și semnale pentru trading profesionist',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
