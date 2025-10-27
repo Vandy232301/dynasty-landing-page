@@ -2,13 +2,18 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import MobileMenu from './components/MobileMenu'
 import ScrollToTop from './components/ScrollToTop'
 import AchievementBadge, { AchievementBadgeWithStars } from './components/AchievementBadge'
+import CountdownTimer from './components/CountdownTimer'
+import VideoPopup from './components/VideoPopup'
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [showHeaderCountdown, setShowHeaderCountdown] = useState(false)
+  const [headerTimeLeft, setHeaderTimeLeft] = useState(10 * 60) // 10 minutes in seconds
+  const [isVideoPopupOpen, setIsVideoPopupOpen] = useState(false)
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -18,15 +23,50 @@ export default function Home() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
+  // Show header countdown when scrolling down
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setShowHeaderCountdown(scrollPosition > 100) // Show after 100px scroll
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Header countdown timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeaderTimeLeft((prevTime) => {
+        if (prevTime <= 0) {
+          return 0
+        }
+        return prevTime - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  const formatTime = (value: number) => value.toString().padStart(2, '0')
+  const hours = Math.floor(headerTimeLeft / 3600)
+  const minutes = Math.floor((headerTimeLeft % 3600) / 60)
+  const seconds = headerTimeLeft % 60
+
   return (
     <main ref={ref} className="w-full">
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
       <ScrollToTop />
+      <VideoPopup 
+        isOpen={isVideoPopupOpen} 
+        onClose={() => setIsVideoPopupOpen(false)}
+        videoUrl="/videos/Dynasty_Video_Prez.mov"
+      />
       
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-dark/70 backdrop-blur-md border-b border-dark-accent">
         <nav className="max-w-[1512px] mx-auto px-6 h-[61px] flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
             <Image 
               src="/images/logo.svg" 
               alt="Dynasty Logo" 
@@ -34,6 +74,31 @@ export default function Home() {
               height={19}
               className="h-[19px] w-auto"
             />
+            
+            {/* Header Countdown Timer - Shows when scrolling */}
+            {showHeaderCountdown && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="hidden lg:flex items-center"
+              >
+                <div className="flex gap-2">
+                  <div className="bg-[rgba(255,47,154,0.1)] border border-[rgba(255,47,154,0.19)] rounded px-2 py-1 text-center">
+                    <div className="text-[16px] leading-[1.21] font-normal">{formatTime(hours)}</div>
+                    <div className="text-[6px] leading-[1.21]">Ore</div>
+                  </div>
+                  <div className="bg-[rgba(255,47,154,0.1)] border border-[rgba(255,47,154,0.19)] rounded px-2 py-1 text-center">
+                    <div className="text-[16px] leading-[1.21] font-normal">{formatTime(minutes)}</div>
+                    <div className="text-[6px] leading-[1.21]">Minute</div>
+                  </div>
+                  <div className="bg-[rgba(255,47,154,0.1)] border border-[rgba(255,47,154,0.19)] rounded px-2 py-1 text-center">
+                    <div className="text-[16px] leading-[1.21] font-normal">{formatTime(seconds)}</div>
+                    <div className="text-[6px] leading-[1.21]">Secunde</div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </div>
           
           <div className="hidden md:flex items-center gap-8">
@@ -127,15 +192,47 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-6"
           >
             <a 
               href="https://whop.com/dynasty001/dynasty-all-in-one/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-primary text-white text-xs px-12 py-3 rounded-sm hover:bg-primary/90 transition-all hover:scale-105"
+              className="inline-block bg-primary text-white text-lg px-16 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
             >
               Accesează DYNASTY - Oferta LIMITATA 99 Euro
             </a>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="text-lg mb-8"
+          >
+            Pret normal 149 Euro - OFERTA EXPIRA in:
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mb-8"
+          >
+            <CountdownTimer />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            <button 
+              onClick={() => setIsVideoPopupOpen(true)}
+              className="inline-block bg-gradient-to-r from-primary to-[#330099] border border-[#742FFF] text-white text-lg px-12 py-4 rounded-full hover:opacity-90 transition-all hover:scale-105"
+            >
+              Vezi VIDEO de Prezentare
+            </button>
           </motion.div>
         </div>
       </section>
@@ -155,6 +252,23 @@ export default function Home() {
             fill
             className="object-cover"
           />
+        </motion.div>
+      </section>
+
+      {/* Video Presentation Button */}
+      <section className="max-w-[1512px] mx-auto px-4 sm:px-6 py-6 sm:py-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <button 
+            onClick={() => setIsVideoPopupOpen(true)}
+            className="inline-block bg-gradient-to-r from-primary to-[#330099] border border-[#742FFF] text-white text-lg px-12 py-4 rounded-full hover:opacity-90 transition-all hover:scale-105"
+          >
+            Vezi VIDEO de Prezentare
+          </button>
         </motion.div>
       </section>
 
@@ -402,125 +516,29 @@ export default function Home() {
           +100 membri • rezultate consistente • disciplină • profit
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1320px] mx-auto mb-6">
-          {[1, 2, 3].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative aspect-[420/242] rounded-sm overflow-hidden hover:scale-105 transition-transform"
-            >
-              <Image
-                src={`/images/result-screenshot-${i}.png`}
-                alt={`Result ${i}`}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-[1320px] mx-auto mb-4 sm:mb-6">
+          {Array.from({ length: 39 }, (_, i) => {
+            const imageNumber = i + 1;
+            if (imageNumber === 27) return null; // Skip C27 as it doesn't exist
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                className="w-full"
+              >
+                <img
+                  src={`/images/C${imageNumber}.png`}
+                  alt={`Trading Result ${imageNumber}`}
+                  className="w-full h-auto object-contain"
+                />
+              </motion.div>
+            );
+          })}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1320px] mx-auto mb-6">
-          {[4, 6, 5].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative aspect-[422/243] rounded-sm overflow-hidden hover:scale-105 transition-transform"
-            >
-              <Image
-                src={`/images/result-screenshot-${i}.png`}
-                alt={`Result ${i}`}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1320px] mx-auto mb-6">
-          {[7, 8, 9].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative aspect-[422/286] rounded-sm overflow-hidden hover:scale-105 transition-transform"
-            >
-              <Image
-                src={`/images/result-screenshot-${i}.png`}
-                alt={`Result ${i}`}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1320px] mx-auto mb-6">
-          {[10, 11, 12].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative aspect-[422/286] rounded-sm overflow-hidden hover:scale-105 transition-transform"
-            >
-              <Image
-                src={`/images/result-screenshot-${i}.png`}
-                alt={`Result ${i}`}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1320px] mx-auto">
-          {[13, 14, 15].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative aspect-[422/306] rounded-sm overflow-hidden hover:scale-105 transition-transform"
-            >
-              <Image
-                src={`/images/result-screenshot-${i}.png`}
-                alt={`Result ${i}`}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1320px] mx-auto mt-6">
-          {[16, 17, 18].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative aspect-[422/306] rounded-sm overflow-hidden hover:scale-105 transition-transform"
-            >
-              <Image
-                src={`/images/result-screenshot-${i}.png`}
-                alt={`Result ${i}`}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
-        </div>
       </section>
 
       {/* Test Our Style CTA */}
