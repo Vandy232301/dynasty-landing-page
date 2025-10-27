@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 export default function ExpiredPage() {
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
-    minutes: 1, // Changed from 10 to 1
+    minutes: 1, // 1 minute countdown
     seconds: 0
   })
   const router = useRouter()
@@ -24,7 +24,7 @@ export default function ExpiredPage() {
         } else {
           // Timer expired, redirect to normal price page
           clearInterval(timer)
-          router.push('/normal') // Redirect to /normal
+          router.push('/normal')
           return prev
         }
       })

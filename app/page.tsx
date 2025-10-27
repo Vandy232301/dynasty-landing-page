@@ -382,6 +382,19 @@ export default function Home() {
               <p className="text-xs opacity-50">
                 (Printre ultimele semnale a generat +163.000% – adică peste 1630X profit real)
               </p>
+              
+              {/* Colored descriptive text */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="mt-2 mb-12"
+              >
+                <p className="text-[45px] leading-[1.21] text-purple-400">
+                  Profituri explozive prin identificarea monedelor cu potențial viral înainte ca ele să explodeze pe piață.
+                </p>
+              </motion.div>
             </div>
             <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
               <Image
@@ -415,6 +428,19 @@ export default function Home() {
               <p className="text-xs opacity-50">
                 (Winrate constant între 90% și 100% pe semnale validate)
               </p>
+              
+              {/* Colored descriptive text */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="mt-2 mb-12"
+              >
+                <p className="text-[45px] leading-[1.21] text-cyan-400">
+                  Construiește capitalul prin strategii de trading disciplinate și profituri consistente zilnic.
+                </p>
+              </motion.div>
             </div>
             <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
               <Image
@@ -448,6 +474,19 @@ export default function Home() {
               <p className="text-xs opacity-50">
                 (Construiește un portofoliu solid și diversificat pe termen lung)
               </p>
+              
+              {/* Colored descriptive text */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="mt-2 mb-12"
+              >
+                <p className="text-[45px] leading-[1.21] text-pink-400">
+                  Creează stabilitate financiară pe termen lung prin investiții strategice și diversificate.
+                </p>
+              </motion.div>
             </div>
             <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
               <Image
