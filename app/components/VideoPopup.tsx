@@ -71,11 +71,25 @@ export default function VideoPopup({ isOpen, onClose, videoUrl, videoId }: Video
                   autoPlay
                   className="w-full h-full"
                   onLoadedData={() => setIsLoading(false)}
+                  onError={() => setIsLoading(false)}
                 />
               ) : (
                 // Default placeholder
-                <div className="w-full h-full flex items-center justify-center bg-gray-900 text-white">
-                  <p>No video URL provided</p>
+                <div className="w-full h-full flex flex-col items-center justify-center bg-gray-900 text-white p-8">
+                  <div className="text-6xl mb-4">🎥</div>
+                  <h3 className="text-2xl font-bold mb-2">Video de Prezentare</h3>
+                  <p className="text-center text-gray-300">
+                    Video-ul va fi disponibil în curând.<br/>
+                    Pentru mai multe informații, accesează comunitatea DYNASTY.
+                  </p>
+                  <a 
+                    href="https://whop.com/dynasty001/dynasty-all-in-one/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-all"
+                  >
+                    Accesează DYNASTY
+                  </a>
                 </div>
               )}
             </div>

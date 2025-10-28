@@ -12,6 +12,14 @@ export default function ExpiredPage() {
   })
   const router = useRouter()
 
+  // Check if offer has expired on component mount
+  useEffect(() => {
+    const offerExpired = localStorage.getItem('offerExpired')
+    if (offerExpired === 'true') {
+      router.push('/normal')
+    }
+  }, [router])
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -22,8 +30,9 @@ export default function ExpiredPage() {
         } else if (prev.hours > 0) {
           return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 }
         } else {
-          // Timer expired, redirect to normal price page
+          // Timer expired, mark as expired and redirect to normal price page
           clearInterval(timer)
+          localStorage.setItem('offerExpired', 'true')
           router.push('/normal')
           return prev
         }
@@ -37,11 +46,11 @@ export default function ExpiredPage() {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - Matching Figma Design */}
       <div 
         className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: 'url(/images/expired-page-bg.png)',
+          backgroundImage: 'url(/images/brand-background.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -58,7 +67,7 @@ export default function ExpiredPage() {
           className="mb-12"
         >
           <img
-            src="/images/expired-page-logo.png"
+            src="/images/dynasty-logo-expired.png"
             alt="DYNASTY Logo"
             className="w-[422px] h-[75px] object-contain"
           />
@@ -98,25 +107,27 @@ export default function ExpiredPage() {
         </motion.p>
         
         {/* CTA Button */}
-        <motion.a
-          href="https://whop.com/dynasty001/dynasty-wealth-all-in-one-29/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-gradient-to-r from-[#5500FF] to-[#330099] border border-[#742FFF] rounded-full text-white hover:from-[#6600FF] hover:to-[#4400AA] transition-all duration-200 mb-12 inline-flex items-center justify-center"
-          style={{ 
-            fontWeight: 400,
-            fontSize: '18px',
-            lineHeight: '1.2102272245619032em',
-            width: '308px',
-            height: '78px',
-            padding: '0'
-          }}
+          className="relative group mb-12"
         >
-          Accesează DYNASTY
-        </motion.a>
+          <a
+            href="https://whop.com/dynasty001/dynasty-wealth-all-in-one-29/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-primary text-white text-[16px] leading-[1.21] px-20 py-5 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
+          >
+            Accesează DYNASTY
+          </a>
+          
+          {/* Hover Tooltip */}
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-black text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10">
+            Testează DYNASTY 3 zile pentru doar 29 Euro
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+          </div>
+        </motion.div>
 
         {/* Countdown Timer */}
         <motion.div

@@ -20,7 +20,6 @@ export default function NormalPage() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
-
   return (
     <main ref={ref} className="w-full">
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
@@ -28,7 +27,7 @@ export default function NormalPage() {
       <VideoPopup 
         isOpen={isVideoPopupOpen} 
         onClose={() => setIsVideoPopupOpen(false)}
-        videoUrl="/videos/Dynasty_Video_Prez.mov"
+        videoId="sGrJKjnJHe0"
       />
       
       {/* Header */}
@@ -58,7 +57,7 @@ export default function NormalPage() {
               href="https://whop.com/dynasty001/dynasty-wealth-all-in-one-149/" 
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary text-white text-lg px-16 py-4 rounded-full hover:bg-primary/90 transition-all"
+              className="bg-[#5500FF] text-white text-[12px] leading-[1.21] px-6 py-2.5 rounded-full hover:bg-[#5500FF]/90 transition-all"
             >
               Accesează DYNASTY
             </a>
@@ -141,23 +140,10 @@ export default function NormalPage() {
               href="https://whop.com/dynasty001/dynasty-wealth-all-in-one-149/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-primary text-white text-lg px-16 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
+              className="inline-block bg-primary text-white text-[16px] leading-[1.21] px-20 py-5 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
             >
               Accesează DYNASTY
             </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            <button 
-              onClick={() => setIsVideoPopupOpen(true)}
-              className="inline-block bg-gradient-to-r from-primary to-[#330099] border border-[#742FFF] text-white text-lg px-12 py-4 rounded-full hover:opacity-90 transition-all hover:scale-105"
-            >
-              Vezi VIDEO de Prezentare
-            </button>
           </motion.div>
         </div>
       </section>
@@ -279,149 +265,154 @@ export default function NormalPage() {
       </section>
 
       {/* Three Pillars Section */}
-      <section className="max-w-[1512px] mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] leading-[1.21] font-normal text-center mb-8 sm:mb-16">
-          Trei piloni. O singură direcție: PROFIT.
-        </h2>
-
-        <div className="grid grid-cols-1 gap-8 sm:gap-12 max-w-[1320px] mx-auto">
-          {/* Memecoin Trading */}
-          <motion.div
-            id="memecoin"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+      <section className="py-16 sm:py-20 bg-black">
+        <div className="max-w-[1512px] mx-auto px-4 sm:px-6">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-dark-secondary border border-dark-border rounded-sm p-6 sm:p-8 lg:p-12 grid md:grid-cols-2 gap-6 sm:gap-8 items-center hover:border-primary/30 transition-colors"
+            className="text-[45px] leading-[1.21] font-normal text-center text-white mb-16 sm:mb-20"
           >
-            <div className="order-2 md:order-1">
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6">
-                MEMECOIN TRADING
-              </h3>
-              <p className="text-sm sm:text-base leading-[1.21] mb-3 sm:mb-4">
-                Call-uri zilnice pe monede cu potențial exploziv.<br />
-                Boți și alerte pentru proiecte timpurii.<br />
-                CT Tracker – monitorizează trendurile virale.<br />
-                Suport și explicații clare, pas cu pas.
-              </p>
-              <p className="text-xs opacity-50">
-                (Printre ultimele semnale a generat +163.000% – adică peste 1630X profit real)
-              </p>
-              
-              {/* Colored descriptive text */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-2 mb-12"
-              >
-                <p className="text-[45px] leading-[1.21] text-purple-400">
-                  Profituri explozive prin identificarea monedelor cu potențial viral înainte ca ele să explodeze pe piață.
+            Trei piloni. O singură direcție: PROFIT.
+          </motion.h2>
+          
+          <div className="space-y-16">
+            {/* Memecoin Trading Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
+            >
+              <div className="pl-8">
+                <h3 className="text-[#5500FF] text-[65px] leading-[1.21] font-medium mb-6">
+                  MEMECOIN<br />TRADING
+                </h3>
+                <p className="text-white text-[16px] leading-[1.21] mb-4">
+                  Call-uri zilnice pe monede cu potențial exploziv.<br />
+                  Boți și alerte pentru proiecte timpurii.<br />
+                  CT Tracker – monitorizează trendurile virale.<br />
+                  Suport și explicații clare, pas cu pas.
                 </p>
-              </motion.div>
-            </div>
-            <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
-              <Image
-                src="/images/trading-result-3.png"
-                alt="Memecoin Trading Results"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
+                <p className="text-white text-[12px] leading-[1.21] opacity-50">
+                  (Printre ultimele semnale a generat +163.000% – adică peste 1630X profit real)
+                </p>
+              </div>
+              <div className="relative aspect-[645/363] rounded-sm overflow-hidden">
+                <Image
+                  src="/images/trading-result-3.png"
+                  alt="Memecoin Trading Results"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
 
-          {/* Futures Trading */}
-          <motion.div
-            id="futures"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-dark-secondary border border-dark-border rounded-sm p-6 sm:p-8 lg:p-12 grid md:grid-cols-2 gap-6 sm:gap-8 items-center hover:border-primary/30 transition-colors"
-          >
-            <div className="order-2 md:order-1">
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6">
-                FUTURES TRADING
-              </h3>
-              <p className="text-sm sm:text-base leading-[1.21] mb-3 sm:mb-4">
-                Intrări și ieșiri precise, zilnic.<br />
-                Strategia profitului compus 2%/zi.<br />
-                Obiectiv: 1.000.000$ prin disciplină.<br />
-                Suport pentru risk și execuție corectă.
+            {/* Big descriptive text under Memecoin */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="max-w-[1320px] mx-auto"
+            >
+              <p className="text-[#5500FF] text-[45px] leading-[1.21] font-normal text-left">
+                Prinde MEMECOIN-uri Explozive care pot performa sute de X-uri într-un termen scurt, și cu care poți transforma 100$ în mii, zeci de mii sau sute de mii de $.
               </p>
-              <p className="text-xs opacity-50">
-                (Winrate constant între 90% și 100% pe semnale validate)
-              </p>
-              
-              {/* Colored descriptive text */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-2 mb-12"
-              >
-                <p className="text-[45px] leading-[1.21] text-cyan-400">
-                  Construiește capitalul prin strategii de trading disciplinate și profituri consistente zilnic.
-                </p>
-              </motion.div>
-            </div>
-            <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
-              <Image
-                src="/images/trading-result-2.png"
-                alt="Futures Trading Results"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Wealth Portfolio */}
-          <motion.div
-            id="wealth"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-dark-secondary border border-dark-border rounded-sm p-6 sm:p-8 lg:p-12 grid md:grid-cols-2 gap-6 sm:gap-8 items-center hover:border-primary/30 transition-colors"
-          >
-            <div className="order-2 md:order-1">
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6">
-                WEALTH PORTFOLIO
-              </h3>
-              <p className="text-sm sm:text-base leading-[1.21] mb-3 sm:mb-4">
-                Strategii pe termen scurt, mediu, lung.<br />
-                Spot trading organizat și planificat.<br />
-                Analize macro și trenduri fundamentale.<br />
-                Ghidaj pentru stabilitate financiară reală.
-              </p>
-              <p className="text-xs opacity-50">
-                (Construiește un portofoliu solid și diversificat pe termen lung)
-              </p>
-              
-              {/* Colored descriptive text */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-2 mb-12"
-              >
-                <p className="text-[45px] leading-[1.21] text-pink-400">
-                  Creează stabilitate financiară pe termen lung prin investiții strategice și diversificate.
+            {/* Futures Trading Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
+            >
+              <div className="order-2 md:order-1 pl-8">
+                <h3 className="text-[#00FFCC] text-[65px] leading-[1.21] font-medium mb-6">
+                  FUTURES<br />TRADING
+                </h3>
+                <p className="text-white text-[16px] leading-[1.21] mb-4">
+                  Intrări și ieșiri precise, zilnic.<br />
+                  Strategia profitului compus 2%/zi.<br />
+                  Obiectiv: 1.000.000$ prin disciplină.<br />
+                  Suport pentru risk și execuție corectă.
                 </p>
-              </motion.div>
-            </div>
-            <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
-              <Image
-                src="/images/trading-result-1.png"
-                alt="Wealth Portfolio Results"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
+                <p className="text-white text-[12px] leading-[1.21] opacity-50">
+                  (Winrate constant între 90% și 100% pe semnale validate)
+                </p>
+              </div>
+              <div className="relative aspect-[645/363] rounded-sm overflow-hidden order-1 md:order-2">
+                <Image
+                  src="/images/trading-result-2.png"
+                  alt="Futures Trading Results"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Big descriptive text under Futures */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="max-w-[1320px] mx-auto"
+            >
+              <p className="text-[#00FFCC] text-[45px] leading-[1.21] font-normal text-left">
+                Aplică strategia de FUTURES TRADING care poate genera profituri uriașe într-un termen scurt, și cu care poți transforma 100$ în mii, zeci de mii sau chiar un milion de $.
+              </p>
+            </motion.div>
+
+            {/* Wealth Portfolio Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
+            >
+              <div className="pl-8">
+                <h3 className="text-[#CE036E] text-[65px] leading-[1.21] font-medium mb-6">
+                  WEALTH<br />PORTFOLIO
+                </h3>
+                <p className="text-white text-[16px] leading-[1.21] mb-4">
+                  Strategii pe termen scurt, mediu, lung.<br />
+                  Spot trading organizat și planificat.<br />
+                  Analize macro și trenduri fundamentale.<br />
+                  Ghidaj pentru stabilitate financiară reală.
+                </p>
+                <p className="text-white text-[12px] leading-[1.21] opacity-50">
+                  (Construiește un portofoliu solid și diversificat pe termen lung)
+                </p>
+              </div>
+              <div className="relative aspect-[645/363] rounded-sm overflow-hidden">
+                <Image
+                  src="/images/trading-result-1.png"
+                  alt="Wealth Portfolio Results"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Big descriptive text under Wealth */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="max-w-[1320px] mx-auto"
+            >
+              <p className="text-[#CE036E] text-[45px] leading-[1.21] font-normal text-left">
+                Construiește un WEALTH PORTFOLIO inteligent care îți aduce stabilitate financiară reală, prin care poți transforma 100$ în mii, zeci de mii sau chiar independență totală.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -496,7 +487,7 @@ export default function NormalPage() {
                 <img
                   src={`/images/C${imageNumber}.png`}
                   alt={`Trading Result ${imageNumber}`}
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain rounded-sm hover:opacity-80 transition-opacity duration-300"
                 />
               </motion.div>
             );
@@ -536,7 +527,7 @@ export default function NormalPage() {
             href="https://t.me/VANDY_001_Official"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-dark-accent border border-[#1E1E1E] text-white text-xs px-12 py-3 rounded-sm hover:bg-dark-accent/80 hover:border-primary/50 transition-all"
+            className="inline-block bg-dark-accent border border-[#1E1E1E] text-white text-xs px-12 py-3 rounded-full hover:bg-dark-accent/80 hover:border-primary/50 transition-all"
           >
             Accesează comunitatea gratuită
           </a>
@@ -585,7 +576,7 @@ export default function NormalPage() {
               href="https://whop.com/dynasty001/dynasty-wealth-all-in-one-149/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-primary text-white text-lg px-16 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
+              className="inline-block bg-primary text-white text-[16px] leading-[1.21] px-20 py-5 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
             >
               Accesează DYNASTY
             </a>
@@ -615,4 +606,3 @@ export default function NormalPage() {
     </main>
   )
 }
-

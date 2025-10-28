@@ -15,8 +15,10 @@ export default function CountdownTimer({ initialMinutes = 10 }: CountdownTimerPr
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime <= 0) {
-          // Redirect to expired page when timer reaches zero
-          router.push('/expired')
+          clearInterval(timer)
+          // Mark offer as expired and redirect to normal page
+          localStorage.setItem('offerExpired', 'true')
+          router.push('/normal')
           return 0
         }
         return prevTime - 1
@@ -24,7 +26,7 @@ export default function CountdownTimer({ initialMinutes = 10 }: CountdownTimerPr
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [initialMinutes, router]) // Added router to dependency array
+  }, [initialMinutes, router])
 
   const hours = Math.floor(timeLeft / 3600)
   const minutes = Math.floor((timeLeft % 3600) / 60)
