@@ -284,19 +284,19 @@ export default function NormalPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
+              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-4 sm:p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
             >
-              <div className="pl-8">
-                <h3 className="text-[#5500FF] text-[65px] leading-[1.21] font-medium mb-6">
+              <div className="pl-0 md:pl-8">
+                <h3 className="text-[#5500FF] text-[32px] sm:text-[45px] md:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6 break-words">
                   MEMECOIN<br />TRADING
                 </h3>
-                <p className="text-white text-[16px] leading-[1.21] mb-4">
+                <p className="text-white text-[14px] sm:text-[16px] leading-[1.21] mb-4">
                   Call-uri zilnice pe monede cu potențial exploziv.<br />
                   Boți și alerte pentru proiecte timpurii.<br />
                   CT Tracker – monitorizează trendurile virale.<br />
                   Suport și explicații clare, pas cu pas.
                 </p>
-                <p className="text-white text-[12px] leading-[1.21] opacity-50">
+                <p className="text-white text-[11px] sm:text-[12px] leading-[1.21] opacity-50 break-words">
                   (Printre ultimele semnale a generat +163.000% – adică peste 1630X profit real)
                 </p>
               </div>
@@ -316,9 +316,9 @@ export default function NormalPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="max-w-[1320px] mx-auto"
+              className="max-w-[1320px] mx-auto px-4"
             >
-              <p className="text-[#5500FF] text-[45px] leading-[1.21] font-normal text-left">
+              <p className="text-[#5500FF] text-[24px] sm:text-[32px] md:text-[45px] leading-[1.21] font-normal text-left break-words">
                 Prinde MEMECOIN-uri Explozive care pot performa sute de X-uri într-un termen scurt, și cu care poți transforma 100$ în mii, zeci de mii sau sute de mii de $.
               </p>
             </motion.div>
@@ -329,19 +329,19 @@ export default function NormalPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
+              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-4 sm:p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
             >
-              <div className="order-2 md:order-1 pl-8">
-                <h3 className="text-[#00FFCC] text-[65px] leading-[1.21] font-medium mb-6">
+              <div className="order-2 md:order-1 pl-0 md:pl-8">
+                <h3 className="text-[#00FFCC] text-[32px] sm:text-[45px] md:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6 break-words">
                   FUTURES<br />TRADING
                 </h3>
-                <p className="text-white text-[16px] leading-[1.21] mb-4">
+                <p className="text-white text-[14px] sm:text-[16px] leading-[1.21] mb-4">
                   Intrări și ieșiri precise, zilnic.<br />
                   Strategia profitului compus 2%/zi.<br />
                   Obiectiv: 1.000.000$ prin disciplină.<br />
                   Suport pentru risk și execuție corectă.
                 </p>
-                <p className="text-white text-[12px] leading-[1.21] opacity-50">
+                <p className="text-white text-[11px] sm:text-[12px] leading-[1.21] opacity-50 break-words">
                   (Winrate constant între 90% și 100% pe semnale validate)
                 </p>
               </div>
@@ -361,9 +361,9 @@ export default function NormalPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="max-w-[1320px] mx-auto"
+              className="max-w-[1320px] mx-auto px-4"
             >
-              <p className="text-[#00FFCC] text-[45px] leading-[1.21] font-normal text-left">
+              <p className="text-[#00FFCC] text-[24px] sm:text-[32px] md:text-[45px] leading-[1.21] font-normal text-left break-words">
                 Aplică strategia de FUTURES TRADING care poate genera profituri uriașe într-un termen scurt, și cu care poți transforma 100$ în mii, zeci de mii sau chiar un milion de $.
               </p>
             </motion.div>
@@ -374,19 +374,19 @@ export default function NormalPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
+              className="bg-[#0B0B0B] border border-[#151515] rounded-sm p-4 sm:p-8 grid md:grid-cols-2 gap-8 items-center max-w-[1320px] mx-auto"
             >
-              <div className="pl-8">
-                <h3 className="text-[#CE036E] text-[65px] leading-[1.21] font-medium mb-6">
+              <div className="pl-0 md:pl-8">
+                <h3 className="text-[#CE036E] text-[32px] sm:text-[45px] md:text-[65px] leading-[1.21] font-medium mb-4 sm:mb-6 break-words">
                   WEALTH<br />PORTFOLIO
                 </h3>
-                <p className="text-white text-[16px] leading-[1.21] mb-4">
+                <p className="text-white text-[14px] sm:text-[16px] leading-[1.21] mb-4">
                   Strategii pe termen scurt, mediu, lung.<br />
                   Spot trading organizat și planificat.<br />
                   Analize macro și trenduri fundamentale.<br />
                   Ghidaj pentru stabilitate financiară reală.
                 </p>
-                <p className="text-white text-[12px] leading-[1.21] opacity-50">
+                <p className="text-white text-[11px] sm:text-[12px] leading-[1.21] opacity-50 break-words">
                   (Construiește un portofoliu solid și diversificat pe termen lung)
                 </p>
               </div>
@@ -406,9 +406,9 @@ export default function NormalPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="max-w-[1320px] mx-auto"
+              className="max-w-[1320px] mx-auto px-4"
             >
-              <p className="text-[#CE036E] text-[45px] leading-[1.21] font-normal text-left">
+              <p className="text-[#CE036E] text-[24px] sm:text-[32px] md:text-[45px] leading-[1.21] font-normal text-left break-words">
                 Construiește un WEALTH PORTFOLIO inteligent care îți aduce stabilitate financiară reală, prin care poți transforma 100$ în mii, zeci de mii sau chiar independență totală.
               </p>
             </motion.div>
